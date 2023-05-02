@@ -1,7 +1,9 @@
 from telegram import Update
 from telegram.ext import ContextTypes
+import bot
 
 desc = 'Nhận thông tin trò chuyện hiện tại'
+config = bot.config['bot']
 
 
 async def autoDelete(context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -19,7 +21,7 @@ async def exec(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if chat_type == 'private':
         callback = await msg.reply_text(f'👨🏼‍🔧User ID: `{user_id}`', parse_mode='Markdown')
     # gửi cho nhóm thông tin trò chuyện hiện tại
-    elif chat_id == context.bot.config['bot']['group_id']:
+    elif chat_id == config['group_id']:
         callback =  await msg.reply_text(f'👥Chat ID: `{chat_id}`', parse_mode='Markdown')
     # xóa tin nhắn
     if chat_type != 'private':
