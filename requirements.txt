@@ -5,3 +5,4 @@ python_telegram_bot==20.0a4
 PyYAML==6.0
 requests==2.27.1
 sshtunnel==0.4.0
+mysql-connector-python==8.0.33
