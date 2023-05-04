@@ -56,7 +56,7 @@ async def exec(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
                     await msg.reply_markdown('❌*Lỗi*\nĐịnh dạng đúng là: `/add udid_apple type_of_device wait(d)`')
                     return
 
-                purchase_date = datetime.today().strftime('%Y-%m-%d')
+                purchase_date = date_update = datetime.today().strftime('%Y-%m-%d')
 
                 db = MysqlUtils()
                 # kiểm tra xem UDID đã tồn tại trong cơ sở dữ liệu hay chưa
@@ -65,10 +65,10 @@ async def exec(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
                     # sử dụng câu lệnh UPDATE để cập nhật thông tin của bản ghi
                     sql = '''
                         UPDATE `user`
-                        SET `type_of_device` = %s, `purchase_date` = %s, `wait` = %s
+                        SET `type_of_device` = %s, `date_update` = %s, `wait` = %s
                         WHERE `udid_apple` = %s
                     '''
-                    params = (type_of_device, purchase_date, wait, udid_apple)
+                    params = (type_of_device, date_update, wait, udid_apple)
                     cursor.execute(sql, params)
                     db.conn.commit()
                     db.close()
@@ -77,10 +77,10 @@ async def exec(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
                     cursor = db.conn.cursor()
                     # sử dụng câu lệnh INSERT INTO để thêm một bản ghi mới
                     sql = '''
-                        INSERT INTO `user` (`udid_apple`, `type_of_device`, `purchase_date`, `wait`)
+                        INSERT INTO `user` (`udid_apple`, `type_of_device`, `purchase_date`, `date_update`, `wait`)
                         VALUES (%s, %s, %s, %s)
                     '''
-                    params = (udid_apple, type_of_device, purchase_date, wait)
+                    params = (udid_apple, type_of_device, purchase_date, date_update, wait)
                     cursor.execute(sql, params)
                     db.conn.commit()
                     db.close()
