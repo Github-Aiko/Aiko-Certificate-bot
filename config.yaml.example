@@ -1,6 +1,6 @@
 bot:
   token: 1234:1234567890abcdef
-  admin_id: 
+  admin_ids: 
     - 00000000
     - 00000000
   group_id: 0
