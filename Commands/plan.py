@@ -39,8 +39,33 @@ async def autoDelete(context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def exec(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     msg = update.effective_message
+    user_id = msg.from_user.id
     chat_type = msg.chat.type
     
+    if len(context.args) > 0:
+        if user_id in config['admin_ids']:
+            plan_id = context.args[0]
+            plan_status = context.args[1]
+            if plan_status == 'true' or plan_status == '1':
+                plan_status = 1
+            elif plan_status == 'false' or plan_status == '0':
+                plan_status = 0
+            else:
+                await msg.reply_markdown('Bạn phải nhập trạng thái là true hoặc false')
+                return
+            db = MysqlUtils()
+            db.update_one('plan', params={
+                'status': plan_status
+            }, conditions={
+                'id': plan_id
+            })
+            db.conn.commit()
+            db.close()
+            await msg.reply_markdown('✔️*Thành Công*\nBạn đã cập nhật thành công')
+            return
+        else:
+            await msg.reply_markdown('Bạn không có quyền thực hiện lệnh này')
+            return
     callback = await msg.reply_text(get_plan_info())
     
     if chat_type != 'private':
