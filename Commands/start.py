@@ -7,7 +7,7 @@ config = bot.config['bot']
 
 
 def getContent():
-    text = '🗺*Chào mừng bạn đến với Bot quản lý của Aiko*🗺\n\n'
+    text = '🗺*Chào mừng bạn đến với Bot quản lý của Aiko*🗺\n\n/bind + udid để liên kết nhé \n\n ví dụ : /bind 0101823123-JASJDAHSDASK \n'
     keyboard = [[InlineKeyboardButton(
         text='Aiko Certificate Bot', url='https://t.me/aiko_certificate_bot')]]
     reply_markup = InlineKeyboardMarkup(keyboard)
