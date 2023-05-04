@@ -41,7 +41,7 @@ async def exec(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
                     info_str += f"UDID Apple: {user_info[1]}\n"
                 info_str += f"Loại thiết bị: {user_info[2]}\n"           
                 info_str += f"Ngày mua: {purchase_date}\n"
-                if wait_days > 0:
+                if wait_days < 0:
                     info_str += f"Trạng thái: Đang Hoạt Động\n" 
                 else:
                     info_str += f"Thời gian đợi: {wait_days} ngày\n"       
