@@ -28,7 +28,6 @@ async def autoDelete(context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def exec(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = update.effective_message
-    user_id = msg.from_user.id
     chat_id = msg.chat_id
     chat_type = msg.chat.type
     
