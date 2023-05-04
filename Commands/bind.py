@@ -42,7 +42,7 @@ async def exec(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
                 else:
                     await msg.reply_markdown('❌*Lỗi*\nUDID Apple không hợp lệ hoặc đã được liên kết với một tài khoản khác!')
             else:
-                await msg.reply_markdown('❌*Lỗi*\nĐịnh dạng đúng là: /bind udid_apple')
+                await msg.reply_markdown('❌*Lỗi*\nĐịnh dạng đúng là: `/bind udid_apple`')
         else:
             await msg.reply_markdown('❌*Lỗi*\nBạn đã Liên kết tài khoản!')
     else:

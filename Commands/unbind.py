@@ -38,7 +38,7 @@ async def exec(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             else:
                 await msg.reply_markdown('❌*Lỗi*\nUDID Apple không hợp lệ hoặc chưa được liên kết với tài khoản Telegram của bạn!')
         else:
-            await msg.reply_markdown('❌*Lỗi*\nĐịnh dạng đúng là: /unbind udid_apple')
+            await msg.reply_markdown('❌*Lỗi*\nĐịnh dạng đúng là: `/unbind udid_apple`')
     else:
         if chat_id == config['group_id']:
             callback = await msg.reply_markdown('❌*Lỗi*\nVui lòng trò chuyện riêng với tôi để thực hiện huỷ liên kết tài khoản！')
