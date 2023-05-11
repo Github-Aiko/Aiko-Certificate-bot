@@ -31,7 +31,10 @@ def getContent():
         udid_apple = row[1]
         purchase_date = row[2]
         purchase_date = purchase_date.strftime('%d/%m/%Y')
-        date_update = row[3]
+        if row[3] is None:
+            date_update = 'Chưa Update'
+        else:
+            date_update = row[3]
         wait = row[4]
         wait = wait.strftime('%d/%m/%Y')
         udid_info.append(f'ID: {clean_text(str(id))} - UDID: {clean_text(str(udid_apple))} - Ngày Mua: {clean_text(purchase_date)} - Ngày Update: {clean_text(str(date_update))} - Wait: {clean_text(wait)}')
